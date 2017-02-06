@@ -1,23 +1,4 @@
-% Lilypad used to create this file
-\version "2.19.54" 
-
-% Transcribed by Tom Campbell January-February 2017 
-
-%{
-The American Musical Miscellany: A Collection of the Newest and Most Approved Songs, Set to Music
-Published in Northampton Massachusetts, 1798
-
-Alternate lyrics:
-http://quod.lib.umich.edu/e/evans/N28649.0001.001/1:80?rgn=div1;view=fulltext
-
-Song I.
- "The Lucky Escape"
-===================
-
-N.B. This is best viewed in a monospace font.
-
-%}
-
+\include "settings.ly"
 
 \header{
 	% Song I.
@@ -29,15 +10,30 @@ N.B. This is best viewed in a monospace font.
 }
 
 
-\markup\line { "Range:" }
-\absolute 
-{
-	\key f \major
-	\clef treble
-	% Suppress time signature
-	\once \override Staff.TimeSignature #'stencil = ##f 
-	 c' f'' 
-}
+% Display range and key. They are side by side,
+% so they each get a column.
+% Nest \score inside \markup to get 2 columns
+\markup {
+ 	\column {
+		\line \bold { "Range:" }
+		\score {
+			\absolute 
+			{
+				\key f \major
+				\clef treble
+				% Suppress time signature
+				\once \override Staff.TimeSignature #'stencil = ##f 
+			 c' f'' 
+			}
+		}
+	}
+ 	\hspace #10 % Add some right margin to the first column
+ 	\column {
+ 		\bold "Key:"
+		"F Major"
+	} % column
+	\line { " " }
+} % markup
 
 
 {
@@ -162,5 +158,3 @@ N.B. This is best viewed in a monospace font.
 	>>
 
 }
-
-
