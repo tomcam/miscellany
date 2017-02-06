@@ -4,9 +4,7 @@
 	% Song I.
   	title = "The Lucky Escape"
 	composer = "Trad."
-	tagline = "Tagline goes at bottom of last page"
-	% Will I go to hell if I abuse the meter tag this way?
-	meter = "Key: F major"
+	tagline = "The American Musical Miscellany, 1798"
 }
 
 
@@ -158,3 +156,5 @@
 	>>
 
 }
+
+
