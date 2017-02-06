@@ -1,4 +1,4 @@
-% Minimum Lilypad version required for the non-music variables feature
+% Lilypad version used to create this file
 \version "2.19.54"  
 
 \header {
@@ -9,6 +9,45 @@
 	\vspace #1
 	\line \bold { "This ain't organized yet, just so you know" }
 }
+
+%{
+ *******************************************
+ TEMPLATE: SCORE INSIDE MARKUP             *
+ *******************************************
+\markup {
+	\vspace #1
+	\line \bold { "Score inside markup:" }
+}
+
+\markup {
+	\column {
+		"More more more more more"
+		"text"
+	}
+	\column {
+		" "
+	}
+	\score {
+		\absolute 
+			{
+				\key f \major
+				\clef treble
+				\once \override Staff.TimeSignature #'stencil = ##f 
+			 c' f'' 
+			}
+		}
+} 
+\markup {
+	\vspace #1
+	{ "Explanatory line underneath" }
+}
+
+ *******************************************
+ EMD TEMPLATE: SCORE INSIDE MARKUP         *
+ *******************************************
+
+%}
+ 
 
 \markup {
 	\vspace #1
@@ -22,6 +61,7 @@
 		"}"
 	}
 }
+
 
 
 % Display range and key. They are side by side,
@@ -161,4 +201,33 @@
 		"}"
 	}
 }
+
+
+\markup {
+	\vspace #1
+	\line \bold { "Hey now:" }
+}
+
+\markup {
+	\column {
+		"More more more more more"
+		"text"
+	}
+	\column {
+		" "
+	}
+	\score {
+		\absolute 
+			{
+				\key f \major
+				\clef treble
+			 c' f'' 
+			}
+		}
+} 
+\markup {
+	\vspace #1
+	{ "Explanatory line underneath" }
+}
+
 
