@@ -6,6 +6,12 @@
 }
 
 \markup {
+	\vspace #1
+	\line \bold { "This ain't organized yet, just so you know" }
+}
+
+\markup {
+	\vspace #1
 	\line \bold { "Adding text:" }
 }
 \markup {
@@ -22,7 +28,10 @@
 % so they each get a column.
 % Nest \score inside \markup to get 2 columns
 \markup {
-		\line \bold { "Code inside markup:" }
+	\vspace #1
+	\line \bold { "Score inside markup:" }
+}
+\markup {
 		\score {
 			\absolute 
 			{
@@ -40,7 +49,7 @@
 
 \markup {
 	\vspace #2
-	\line \bold { "Here's ow to get code inside markup" }
+	\line \bold { "Here's how to get a score inside markup" }
 }
 \markup {
 	\column \typewriter {
@@ -112,7 +121,7 @@
 
 \markup {
 	\vspace #1
-	\line \bold { "Multiple lines of unformatted code" }
+	\line \bold { "Create multiple lines of unformatted code using \\column" }
 }
 \markup {
 	\vspace #1
@@ -121,14 +130,26 @@
          "    \\column \\typewriter {"
          "        % Put text between double quotes."
          "        % Each one creates a new line"
-         "        \"\""
-         "        \"\""
+         "        \"Line 1\""
+         "        \"Line 2\""
          "    }"
         "}"
     }
 }
 
 \markup {
+	\vspace #1
+	\line \bold { "Result" }
+}
+\markup {
+	\column \typewriter {
+		"Line 1"
+		"Line 2"
+	} 
+}
+
+\markup {
+	\vspace #2
 	\line \bold { "Blank lines" }
 }
 \markup {
