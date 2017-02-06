@@ -1,9 +1,7 @@
-% Lilypad version required for future upgrades
-\version "2.18.2" 
+% Lilypad used to create this file
+\version "2.19.54" 
 
-%%%%%%%%%%%%%% WISH LIST
-%% Start each piece with the range and maybe the key
-
+% Transcribed by Tom Campbell January-February 2017 
 
 %{
 The American Musical Miscellany: A Collection of the Newest and Most Approved Songs, Set to Music
@@ -24,7 +22,23 @@ N.B. This is best viewed in a monospace font.
 \header{
 	% Song I.
   	title = "The Lucky Escape"
+	composer = "Trad."
+	tagline = "Tagline goes at bottom of last page"
+	% Will I go to hell if I abuse the meter tag this way?
+	meter = "Key: F major"
 }
+
+
+\markup\line { "Range:" }
+\absolute 
+{
+	\key f \major
+	\clef treble
+	% Suppress time signature
+	\once \override Staff.TimeSignature #'stencil = ##f 
+	 c' f'' 
+}
+
 
 {
 	\key f \major
@@ -66,7 +80,8 @@ N.B. This is best viewed in a monospace font.
 		% \tuplet 3/2 { c8 r c }
 
 		% Grace notes:
-		% c2 \appoggiatura b16 c2 |     	% c2 \acciaccatura b16 c2 |
+		% c2 \appoggiatura b16 c2 |
+     	% c2 \acciaccatura b16 c2 |
 
 		% Chords:
 		% r4 <c e g>~ <c f a>2 |
@@ -77,6 +92,9 @@ N.B. This is best viewed in a monospace font.
 
 		% partial is for pickup measures.
 		% the 4 after partial means the pickup is a quarter note long 
+		
+		% The lyric markup is probably wrong. It's in the comments
+		% as a rough guide for the music.
  		\partial 4 f8. g16 |              % I that
 		a4 a8. a16 a4 {bes8.} a16 |       % once was a ploughman _  a 
 		{a8. g16 a8} bes8 c4  {d8 [e]} |  % sailor _ _ am now. No  
@@ -104,8 +122,8 @@ N.B. This is best viewed in a monospace font.
 		{a8 [g]} a bes c4\fermata {c8[f]} % up in the morn, I
 		{a8 [g]} d f e c c a |            % tru- sted the car- sin- do and
 		d8 bes bes g \grace d'8 c4 r8 a | % the in- con- stant wind, That
-		bes8  a g f e d' \tuplet 3/2 {{c8 d} bes} |
-		{a8.[bes16]} {g8. [f16]} f4 r4 \bar "|."
+		bes8  a g f e d' \tuplet 3/2 {{c8 d} bes} | % made me for to go and leave _ my
+		{a8.[bes16]} {g8. [f16]} f4 \bar "|." % dear be- hind.	
 
 	}
 	\addlyrics {
