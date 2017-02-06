@@ -40,19 +40,22 @@
 } % markup
 
 
-% Everything enclosed by these brackets plays simultaneously
+% Everything from here down to the >> brackets is synchronized
+% MUSIC GOES HERE!
 <<
-	\relative f' {
-		\key f \major
-		\time 4/4
-		\clef treble 
-		c d e f
-	} 
+\relative f' {
+	\key f \major
+	\time 4/4
+	\clef treble 
+	c d e f
+} % Music ends here
 	
-	\addlyrics {
-	} 
+% LYRICS GO HERE!
+\addlyrics {
 
-% Everything enclosed by these brackets plays simultaneously
+} % Lyrics end here
+
+% Everything from here up to the << brackets is synchronized
 >>
 
 
