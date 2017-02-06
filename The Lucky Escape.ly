@@ -33,7 +33,15 @@
 	\line { " " }
 } % markup
 
+% Put some vertical distance between range/key info
+% and score. 
+% There is probably a better way to do this.
+\markup {
+	\vspace #1
+	{Feedback: yo@tom.im}
+}
 
+% MUSIC GOES HERE!
 {
 	\key f \major
 	\time 4/4
@@ -120,6 +128,8 @@
 		{a8.[bes16]} {g8. [f16]} f4 \bar "|." % dear be- hind.	
 
 	}
+
+% LYRICS GO HERE!
 	\addlyrics {
 		I that | 
 		once was a ploughman _  a | 
