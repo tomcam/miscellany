@@ -47,6 +47,11 @@
 	\key f \major
 	\time 4/4
 	\clef treble 
+	% Broken beams align more naturally with lyrics
+	\autoBeamOff
+
+	% Example of a pickup measure a quarter note long
+ 	%\partial 4 f8. g16 |              
 	c d e f
 } % Music ends here
 	
