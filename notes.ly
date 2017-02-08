@@ -85,6 +85,13 @@
 
 \markup {
 	\vspace #2
+	\fontsize #4
+	\line \bold { "Pitches" } 
+}
+
+
+\markup {
+	\vspace #2
 	\line 
 	{   \bold { "Append" \typewriter {"es"} { "to a note name to add a flat,"}
 		{"and"} \typewriter {"is"} {"to a note name to add a sharp"} }
@@ -111,6 +118,56 @@
 	}	
 }
 
+%{ ***********************************
+   * 
+   * Grace note
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\line \bold { "To add grace notes that aren't included in the note count, use" } 
+	\typewriter {"\\grace"} {":"}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"<<"
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 6/8"
+			"    \\grace a8 g4 fis8 e4 g8"
+			"}"
+			"\\addlyrics {"
+			"    can of grog, If |"
+			"}"
+			">>"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			<<
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 6/8
+				\grace a8 g4 fis8 e4 g8
+			}
+			\addlyrics {
+				can of grog, If |
+			}
+			>>
+		}
+	}	
+}
+
+
 
 %{ ***********************************
    * 
@@ -118,6 +175,13 @@
    * 
    ********************************* 
 %}
+
+\markup {
+	\vspace #2
+	\fontsize #4
+	\line \bold { "Note lengths" } 
+}
+
 
 \markup {
 	\vspace #2
@@ -160,34 +224,34 @@
 \markup {
 	\vspace #2
 	\line 
-	{   \bold { "Notes use the same length until changed, so there's no
-		reason to repeat them."}
+	{   \bold { "Notes use the same length until changed, so there's no reason to repeat them."}
 		 
 	} 
 }
 
 \markup {
 	\vspace #1
-	\hspace #8 \column \typewriter {
-         "\\version \"2.19.54\" "  
-         "\\relative c' {"
-		"\\time 4/4"
-         "     c8 d e f g4 a"
-         "}"
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+         	"     c8 d e f g4 a"
+ 			"}"
+		}
 	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+			\time 4/4
+				c8 d e f g4 a
+			}
+		}
+	}	
 }
 
-\markup {
-	\vspace #1
-	\line { "Results:" }
-}
 
-\relative c' {
-	\time 4/4
-	c8 d e f g4 a
-}
-
-% ///
 
  
 %{ ***********************************
@@ -246,6 +310,7 @@
 		}
 	}	
 }
+
    ********************************* %}
 
 
@@ -292,7 +357,7 @@
 	\vspace #1
 	 \hspace #4 \column \typewriter {
 		"\\markup {"
-		"    \\vspace #3"
+		"    \\vspace #2"
 		"    \\line {\"This paragraph is down several lines\"}"
 		"}"
 	}
@@ -305,12 +370,8 @@
 
 \markup {
 	\hspace #8
-	\vspace #3
+	\vspace #2
 	\line {"This paragraph is down several lines"} 
-}
-
-\markup {
-	\vspace #3
 }
 
 \markup {
@@ -434,7 +495,7 @@
 	\vspace #1
 		\column \typewriter {
 		"\\markup {"
-		"    \\vspace #6 % Replace 6 with desired number of lines"
+		"    \\vspace #3 % Replace 3 with desired number of lines"
 		"    \\line {\"Space appears before this paragraph\"}"
 		"}"
 	}
@@ -447,7 +508,8 @@
 }
 
 \markup {
-	\vspace #6 % Replace 6 with desired number of lines 
+	\hspace #8
+	\vspace #3 % Replace 3 with desired number of lines 
 	\line {"Space appears before this paragraph"}
 }
 
@@ -481,32 +543,5 @@
 
 \markup {
 	\line \bold { "SPECIMEN:" }
-}
-
-\markup {
-	\vspace #2
-	\line \bold { "You will almost always use the" } 
-	\typewriter {"relative"} {"keyword, like this:"}
-}
-
-\markup {
-	\vspace #1
-	\column {
-		\hspace #8 \column \typewriter {
-	         "\\version \"2.19.54\" "  
-	         "\\relative c' {"
-	         "     c d e f"
-	         "}"
-		}
-	}
-	\column {
-		\line { " " }
-		\score {
-			\relative c' {
-				c d e f
-			}
-		}
-	}
-	
 }
 
