@@ -32,7 +32,7 @@
 
 \markup {
 	\vspace #1
-    \hspace #8 \column \typewriter {
+	\hspace #8 \column \typewriter {
          "\\version \"2.19.54\" "  
          "{"
          "     c d e f"
@@ -58,7 +58,7 @@
 
 \markup {
 	\vspace #1
-    \hspace #8 \column \typewriter {
+	\hspace #8 \column \typewriter {
          "\\version \"2.19.54\" "  
          "\\relative c' {"
          "     c d e f"
@@ -76,20 +76,103 @@
 	c d e f
 }
 
+%{ ***********************************
+   * 
+   * Sharps and flats
+   * 
+   ********************************* 
+%}
 
 \markup {
 	\vspace #2
-	\line \bold { "Append" } 
-	\typewriter {"es"} {"to a note name to add a flat,"}
-	{"and"} \typewriter {"is"} {"to a note name to add a sharp"}
+	\line 
+	{   \bold { "Append" \typewriter {"es"} { "to a note name to add a flat,"}
+		{"and"} \typewriter {"is"} {"to a note name to add a sharp"} }
+	} 
 }
 
 \markup {
 	\vspace #1
-    \hspace #8 \column \typewriter {
+	\column {
+		\hspace #8 \column \typewriter {
+	         "\\version \"2.19.54\" "  
+	         "\\relative c' {"
+	         "     c d ees fis"
+	         "}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				c d ees fis
+			}
+		}
+	}	
+}
+
+
+%{ ***********************************
+   * 
+   * Note length #1
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\line 
+	{   \bold { "Append" \typewriter {"8"} { "to make an eighth note,"}
+		{"and"} \typewriter {"4"} {"to make it a quarter"} }
+	} 
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 2/4"
+			"     c8 d e4"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				c8 d e4
+			}
+		}
+	}	
+}
+
+
+
+%{ ***********************************
+   * 
+   * Note length #2
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\line 
+	{   \bold { "Notes use the same length until changed, so there's no
+		reason to repeat them."}
+		 
+	} 
+}
+
+\markup {
+	\vspace #1
+	\hspace #8 \column \typewriter {
          "\\version \"2.19.54\" "  
          "\\relative c' {"
-         "     c d ees fis"
+		"\\time 4/4"
+         "     c8 d e f g4 a"
          "}"
 	}
 }
@@ -97,14 +180,14 @@
 \markup {
 	\vspace #1
 	\line { "Results:" }
-	\hspace #0
 }
 
 \relative c' {
-	c d ees fis
+	\time 4/4
+	c8 d e f g4 a
 }
 
- 
+% ///
 
  
 %{ ***********************************
@@ -120,18 +203,51 @@
    ********************************* 
 \markup {
 	\line \bold { "Use "} { \typewriter "\\column " } 
-		{ "to start new lines of text" }
+	{ "to start new lines of text" }
 }
 \markup {
 	\vspace #1
-    \column \typewriter {
-         "First line"
-         "Second line"
-         "And so on"
+	\column \typewriter {
+		"First line"
+		"Second line"
+		"And so on"
 	}
 }
 
 %}
+
+%{ ***********************************
+   * TEMPLATE for score inside markup
+   * Using 2-column format
+   ***********************************
+
+\markup {
+	\vspace #2
+	\line \bold { "XXX" } 
+	\typewriter {"XXX"} {"XXX:"}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"     XXX"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				XXX
+			}
+		}
+	}	
+}
+   ********************************* %}
+
 
 
 \markup {
@@ -176,7 +292,7 @@
 	\vspace #1
 	 \hspace #4 \column \typewriter {
 		"\\markup {"
-		"    \\vspace #6"
+		"    \\vspace #3"
 		"    \\line {\"This paragraph is down several lines\"}"
 		"}"
 	}
@@ -253,26 +369,27 @@
 
 
 
+
 % Display range and key. They are side by side,
 % so they each get a column.
 % Nest \score inside \markup to get 2 columns
 \markup {
-	 \vspace #2
-		\line 
-		\bold { "Score inside markup:" }
+	\vspace #2
+	\line 
+	\bold { "Score inside markup:" }
 }
 \markup {
-	 \hspace #4 \column \typewriter {
+	\hspace #4 \column \typewriter {
 		"\\markup {"
 		"    \\score {"
 		"        \\absolute"
-        "        {"
+		"        {"
 		"            \\key f \\major"
-        "            \\clef treble"
-        "            \\once \\override Staff.TimeSignature #'stencil = ##f"
-        "            c' f''"
-        "         }"
-        "    }"
+		"            \\clef treble"
+		"            \\once \\override Staff.TimeSignature #'stencil = ##f"
+		"            c' f''"
+		"         }"
+		"    }"
 		"}"
 	}
 }
@@ -313,6 +430,7 @@
 	\line \bold { "Insert space before a paragraph of text" }
 }
 \markup {
+	\hspace #8
 	\vspace #1
 		\column \typewriter {
 		"\\markup {"
@@ -324,23 +442,34 @@
 
 
 \markup {
+	\vspace #1
+	\line { "Results:" }
+}
+
+\markup {
+	\vspace #6 % Replace 6 with desired number of lines 
+	\line {"Space appears before this paragraph"}
+}
+
+\markup {
 	\line \bold { "Use \\column to create separate lines of text" }
 }
 
 \markup {
+	\vspace #1
 	\column \typewriter {
 		"\\markup {"
 		"    \\column {"
-        "         \"First line\" "
-        "         \"Second line\" "
-        "         \"And so on\" "
-        "     }"
+		"         \"First line\" "
+		"         \"Second line\" "
+		"         \"And so on\" "
+		"     }"
 		"}"
 	}
 	\hspace #10
 	
-    \column {
-		\line { " " }
+	\column {
+		\line {"Results:"}
 		\line { " " }
 		"First line"
 		"Second line"
@@ -349,39 +478,35 @@
 }
 
 
+
+\markup {
+	\line \bold { "SPECIMEN:" }
+}
+
+\markup {
+	\vspace #2
+	\line \bold { "You will almost always use the" } 
+	\typewriter {"relative"} {"keyword, like this:"}
+}
+
 \markup {
 	\vspace #1
-    \column {
-         "First line"
-         "Second line"
-         "And so on"
+	\column {
+		\hspace #8 \column \typewriter {
+	         "\\version \"2.19.54\" "  
+	         "\\relative c' {"
+	         "     c d e f"
+	         "}"
+		}
 	}
-}
-
-
-
-
-
-
-\markup {
-		\line \bold { "TEMPLATE for hspace" }
-}
-\markup {
-	\vspace #1
-	\column \typewriter {
-		"\\markup {"
-		\hspace #4 {"\\column {"}
-        \hspace #8 {"\"First line\" "}
-       	\hspace #8 {"\"Second line\" "}
-        \hspace #8 {"\"And so on\" "}
-        \hspace #4 {"}"}
-		{"}"}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				c d e f
+			}
+		}
 	}
-}
-
-
-\markup {
-	\vspace #10 \line \bold { "SPECIMEN:" }
-	{"hello"} \hspace#4 {"world"}
+	
 }
 
