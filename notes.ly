@@ -1,66 +1,255 @@
-% Lilypad version used to create this file
+% Minimum Lilypad version required for the non-music variables feature
 \version "2.19.54"  
 
 \header {
   	title = "How to create a tunebook with Lilypad"
 }
 
-\markup {
-	\vspace #1
-	\line \bold { "This ain't organized yet, just so you know" }
-}
-
-%{
- *******************************************
- TEMPLATE: SCORE INSIDE MARKUP             *
- *******************************************
-\markup {
-	\vspace #1
-	\line \bold { "Score inside markup:" }
-}
-
-\markup {
-	\column {
-		"More more more more more"
-		"text"
-	}
-	\column {
-		" "
-	}
-	\score {
-		\absolute 
-			{
-				\key f \major
-				\clef treble
-				\once \override Staff.TimeSignature #'stencil = ##f 
-			 c' f'' 
-			}
-		}
-} 
-\markup {
-	\vspace #1
-	{ "Explanatory line underneath" }
-}
-
- *******************************************
- EMD TEMPLATE: SCORE INSIDE MARKUP         *
- *******************************************
-
+%{ ***********************************
+   * COMMENT TEMPLATE
+   * 
+   ********************************* 
 %}
+
+%{ ***********************************
+   * 
+   * WRITING THE SCORE
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\fontsize #6
+	\line \bold { "Writing the score" } 
+}
+
+
+\markup {
+	\vspace #2
+	\line \bold { "The minimum file" } {"From the File menu, choose About Lilypond and replace the version number below with that value"}
+}
+
+\markup {
+	\vspace #1
+    \hspace #8 \column \typewriter {
+         "\\version \"2.19.54\" "  
+         "{"
+         "     c d e f"
+         "}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+	\hspace #0
+}
+
+{
+	c d e f
+}
+
+\markup {
+	\vspace #2
+	\line \bold { "You will almost always use the" } 
+	\typewriter {"relative"} {"keyword, like this:"}
+}
+
+\markup {
+	\vspace #1
+    \hspace #8 \column \typewriter {
+         "\\version \"2.19.54\" "  
+         "\\relative c' {"
+         "     c d e f"
+         "}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+	\hspace #0
+}
+
+\relative c' {
+	c d e f
+}
+
+
+\markup {
+	\vspace #2
+	\line \bold { "Append" } 
+	\typewriter {"es"} {"to a note name to add a flat,"}
+	{"and"} \typewriter {"is"} {"to a note name to add a sharp"}
+}
+
+\markup {
+	\vspace #1
+    \hspace #8 \column \typewriter {
+         "\\version \"2.19.54\" "  
+         "\\relative c' {"
+         "     c d ees fis"
+         "}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+	\hspace #0
+}
+
+\relative c' {
+	c d ees fis
+}
+
  
 
+ 
+%{ ***********************************
+   * 
+   * MARKUP (Explanatory text)
+   * 
+   ********************************* 
+%}
+
+%{ ***********************************
+   * TEMPLATE FOR MULTIPLE LINES
+   * OF MARKUP TEXT
+   ********************************* 
+\markup {
+	\line \bold { "Use "} { \typewriter "\\column " } 
+		{ "to start new lines of text" }
+}
 \markup {
 	\vspace #1
-	\line \bold { "Adding text:" }
+    \column \typewriter {
+         "First line"
+         "Second line"
+         "And so on"
+	}
+}
+
+%}
+
+
+\markup {
+	\vspace #2
+	\fontsize #6
+	\line \bold { "Markup (adding explanatory text)" } 
+}
+
+\markup {
+	\vspace #2
+	\line \bold { "Blocks of text" }
+}
+\markup {
+	\hspace #8
+	\vspace #1
+	\column \typewriter {
+		"\\markup {"
+		"    \\line {\"hello, world.\"}"
+		"}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+}
+
+\markup {
+	\hspace #8
+	\vspace #1
+	\line { "hello, world." }
+}
+
+
+
+\markup {
+	\vspace #2
+	\line \bold { "Use" } { \typewriter "\\vspace" } { "to add space between paragraphs:" } 
+}
+
+\markup {
+	\vspace #1
+	 \hspace #4 \column \typewriter {
+		"\\markup {"
+		"    \\vspace #6"
+		"    \\line {\"This paragraph is down several lines\"}"
+		"}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+}
+
+\markup {
+	\hspace #8
+	\vspace #3
+	\line {"This paragraph is down several lines"} 
+}
+
+\markup {
+	\vspace #3
+}
+
+\markup {
+	\vspace #2
+	\line \bold { "Formatting blocks of text" }
 }
 \markup {
 	\vspace #1
 	\column \typewriter {
 		"\\markup {"
-		"    \"Adding text\""
+		"    \\line {\"hello,\" \\bold \"world.\"}"
 		"}"
 	}
 }
+
+\markup {
+	\vspace #1
+	\line {"hello," \bold "world."}
+}
+
+\markup {
+	\vspace #2
+	\column \typewriter {
+		"\\markup {"
+		"    \\line { \\italic \"hello,\" \"world.\"}"
+		"}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { \italic "hello,""world."}
+}
+
+
+
+%{ ***********************************
+   * TEMPLATE for score inside markup
+   ***********************************
+\markup {
+	\line \bold { "What this is" }
+}
+\markup {
+	\score {
+		\absolute {
+			\key f \major
+			\clef treble
+			\once \override Staff.TimeSignature #'stencil = ##f 
+			c' f'' 
+		}
+	}
+}
+
+   ********************************* %}
+
 
 
 
@@ -68,166 +257,131 @@
 % so they each get a column.
 % Nest \score inside \markup to get 2 columns
 \markup {
-	\vspace #1
-	\line \bold { "Score inside markup:" }
+	 \vspace #2
+		\line 
+		\bold { "Score inside markup:" }
 }
 \markup {
-		\score {
-			\absolute 
-			{
-				\key f \major
-				\clef treble
-				% Suppress time signature
-				\once \override Staff.TimeSignature #'stencil = ##f 
+	 \hspace #4 \column \typewriter {
+		"\\markup {"
+		"    \\score {"
+		"        \\absolute"
+        "        {"
+		"            \\key f \\major"
+        "            \\clef treble"
+        "            \\once \\override Staff.TimeSignature #'stencil = ##f"
+        "            c' f''"
+        "         }"
+        "    }"
+		"}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+}
+
+\markup {
+	\vspace #1
+	\score {
+		\absolute {
+			\key f \major
+			\clef treble
+			% Suppress time signature
+			% I think this also works:  \omit Staff.TimeSignature
+			\once \override Staff.TimeSignature #'stencil = ##f 
 			 c' f'' 
-			}
 		}
-	\line { " " }
+	}
 } % markup
 
 
 
+
 \markup {
-	\vspace #2
-	\line \bold { "Here's how to get a score inside markup" }
+	\vspace #1
+	 @uref(http://lilypond.org/doc/v2.19/Documentation/notation/formatting-text, Formatting Text)
+	\line { "See  @uref(http://lilypond.org/doc/v2.19/Documentation/notation/formatting-text, Formatting Text)" }
 }
-\markup {
-	\column \typewriter {
-	"\\markup {"
-    "    \\score {"
-	"        \\absolute"
-	"        {"
-    "          \\key f \\major"
-	"          \\clef treble"
-	"          % Suppress time signature"
-    "          \\once \\override Staff.TimeSignature #'stencil = ##f "
-    ""
-    "          c' f''" 
-	"        }"
-    "    }"
-	"}"
-	} % \typewriter
-}
+
 
 
 
 \markup {
 	\vspace #2
-	\line \bold { "Changing text attributes" }
+	\line \bold { "Insert space before a paragraph of text" }
 }
 \markup {
 	\vspace #1
-	\column \typewriter {
+		\column \typewriter {
 		"\\markup {"
-		"    \\line {\"hello,\"} \\bold {\"world\"}"
-		"    \\line \\italic {\"hello,\"} {\"world\"}"
-		"}"
-	}
-}
-\markup {
-	\vspace #1
-	\line {"hello," } \bold { "world." }
-}
-\markup {
-	\line  \italic {"hello," } { "world." }
-}
-
-
-\markup {
-	\vspace #1
-	\line \bold { "Lines of text:" }
-}
-\markup {
-	\vspace #1
-	\column \typewriter {
-		"\\markup {"
-		"    \\line {\"\"}"
-		"}"
-	}
-}
-
-\markup {
-	\line \bold { "Formatted Lines of text:" }
-}
-\markup {
-	\vspace #1
-	\column \typewriter {
-		"\\markup {"
-		"    \\line \\bold {\"\"}"
+		"    \\vspace #6 % Replace 6 with desired number of lines"
+		"    \\line {\"Space appears before this paragraph\"}"
 		"}"
 	}
 }
 
 
 \markup {
-	\vspace #1
-	\line \bold { "Create multiple lines of unformatted code using \\column" }
-}
-\markup {
-	\vspace #1
-	\column \typewriter {
-        "\\markup {"
-         "    \\column \\typewriter {"
-         "        % Put text between double quotes."
-         "        % Each one creates a new line"
-         "        \"Line 1\""
-         "        \"Line 2\""
-         "    }"
-        "}"
-    }
+	\line \bold { "Use \\column to create separate lines of text" }
 }
 
 \markup {
-	\vspace #1
-	\line \bold { "Result" }
-}
-\markup {
-	\column \typewriter {
-		"Line 1"
-		"Line 2"
-	} 
-}
-
-\markup {
-	\vspace #2
-	\line \bold { "Blank lines" }
-}
-\markup {
-	\vspace #-.25
 	\column \typewriter {
 		"\\markup {"
-        "    % Replace #1 with numbers like #6 or #.25"
-		"    \vspace #1"
+		"    \\column {"
+        "         \"First line\" "
+        "         \"Second line\" "
+        "         \"And so on\" "
+        "     }"
 		"}"
 	}
+	\hspace #10
+	
+    \column {
+		\line { " " }
+		\line { " " }
+		"First line"
+		"Second line"
+ 		"And so on"
+	}
 }
 
 
 \markup {
 	\vspace #1
-	\line \bold { "Hey now:" }
+    \column {
+         "First line"
+         "Second line"
+         "And so on"
+	}
 }
 
+
+
+
+
+
 \markup {
-	\column {
-		"More more more more more"
-		"text"
-	}
-	\column {
-		" "
-	}
-	\score {
-		\absolute 
-			{
-				\key f \major
-				\clef treble
-			 c' f'' 
-			}
-		}
-} 
+		\line \bold { "TEMPLATE for hspace" }
+}
 \markup {
 	\vspace #1
-	{ "Explanatory line underneath" }
+	\column \typewriter {
+		"\\markup {"
+		\hspace #4 {"\\column {"}
+        \hspace #8 {"\"First line\" "}
+       	\hspace #8 {"\"Second line\" "}
+        \hspace #8 {"\"And so on\" "}
+        \hspace #4 {"}"}
+		{"}"}
+	}
 }
 
+
+\markup {
+	\vspace #10 \line \bold { "SPECIMEN:" }
+	{"hello"} \hspace#4 {"world"}
+}
 
