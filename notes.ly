@@ -1,21 +1,56 @@
 % Minimum Lilypad version required for the non-music variables feature
-\version "2.19.54"  
+% \include "settings.ly"
 
 \header {
   	title = "How to create a tunebook with Lilypad"
 }
 
 %{ ***********************************
-   * COMMENT TEMPLATE
+   * MULTILINE COMMENT TEMPLATE
    * 
    ********************************* 
 %}
 
+
+%{ ***********************************
+   * TEMPLATE for score inside markup
+   * Using 2-column format
+   ***********************************
+
+\markup {
+	\vspace #2
+	\line \bold { "XXX" } 
+	\typewriter {"XXX"} {"XXX:"}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"     XXX"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				XXX
+			}
+		}
+	}	
+}
+
+*********************************** %}
+
+
 %{ ***********************************
    * 
-   * WRITING THE SCORE
+   * WRITING THE SCORE 1.
    * 
-   ********************************* 
+   *********************************** 
 %}
 
 \markup {
@@ -24,10 +59,15 @@
 	\line \bold { "Writing the score" } 
 }
 
-
 \markup {
+
 	\vspace #2
-	\line \bold { "The minimum file" } {"From the File menu, choose About Lilypond and replace the version number below with that value"}
+	\column {
+		\bold { "The minimum file" } 
+			\line { "From the" \bold { File } "menu, choose" \bold {About Lilypond} }
+		"This shows the version number."
+		"Replace the version number below with that value"
+	}
 }
 
 \markup {
@@ -49,6 +89,61 @@
 {
 	c d e f
 }
+
+%{ ***********************************
+   * 
+   * WRITING THE SCORE 2.
+   * 
+   ********************************* 
+%}
+
+
+\markup {
+	\vspace #2
+	\line { "You can see that's not the natural range for the notes." }
+	\line { "The clef is assumed to be treble. You can specify the clef easily using" \typewriter { "\\clef" }
+}
+
+}
+
+
+\markup {
+	\vspace #2
+	\line \bold { "XXX" } 
+	\typewriter {"XXX"} {"XXX:"}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"{"
+			"    \\clef bass"
+			"     c d e f"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\absolute {
+				\clef bass
+				{ c d e f }
+			}	
+			
+		}
+	}	
+}
+
+
+
+
+
+
+
+
+
 
 \markup {
 	\vspace #2
@@ -141,7 +236,7 @@
 			"    \\key g \\major"
 			"    \\clef treble"
 			"    \\time 6/8"
-			"    \\grace a8 g4 fis8 e4 g8"
+			"    \\grace a8 g4 fis8 e4 g8 |"
 			"}"
 			"\\addlyrics {"
 			"    can of grog, If |"
@@ -157,7 +252,7 @@
 				\key g \major
 				\clef treble
 				\time 6/8
-				\grace a8 g4 fis8 e4 g8
+				\grace a8 g4 fis8 e4 g8 |
 			}
 			\addlyrics {
 				can of grog, If |
@@ -167,11 +262,52 @@
 	}	
 }
 
+\markup {
+	\vspace #1
+	\line {"To learn about constructs similar to grace notes, visit http://lilypond.org/doc/v2.18/Documentation/notation/special-rhythmic-concerns"}
+}
 
 
 %{ ***********************************
    * 
-   * Note length #1
+   * Note length #1: Whole and half
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\line 
+	{   \bold { "Append" \typewriter {"1"} { "to make a whole note,"}
+		{"and"} \typewriter {"2"} {"to make a half note."} }
+	} 
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+         	"     c2 d2 | e1"
+ 			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+			\time 4/4
+				 c2 d2 | e1
+			}
+		}
+	}	
+}
+
+%{ ***********************************
+   * 
+   * Note length #2: Quarters and eighths
    * 
    ********************************* 
 %}
@@ -216,7 +352,49 @@
 
 %{ ***********************************
    * 
-   * Note length #2
+   * Note length #3
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\fontsize #4
+	\line \bold { "Note lengths: sixteenths and beyond" } 
+}
+
+
+\markup {
+	\vspace #2
+}
+
+\markup {
+	\vspace #1
+	\line { "Append 16 to make it a  16 \super th note" }
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 2/4"
+			"     c8 d e16 f g a b32 c32 d32 e32"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\score {
+			\relative c' {
+				c8 d e16 f g a b32 [c32 d32 e32]
+			}
+		}
+	}	
+}
+
+
+
+%{ ***********************************
+   * 
+   * Note length #1
    * 
    ********************************* 
 %}
@@ -528,10 +706,9 @@
 		"     }"
 		"}"
 	}
-	\hspace #10
 	
 	\column {
-		\line {"Results:"}
+		\line {" "}
 		\line { " " }
 		"First line"
 		"Second line"
@@ -541,7 +718,14 @@
 
 
 
+
 \markup {
 	\line \bold { "SPECIMEN:" }
 }
+
+{
+	\clef bass
+	c d e f
+}
+
 
