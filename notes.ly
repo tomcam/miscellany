@@ -58,8 +58,12 @@ bullet = \markup { \char ##x2022 }
 		\line \bold { "To do:" } 
 		\wordwrap {  { \bullet } Figure out how to get HTML links working }
 		\wordwrap {  { \bullet } Figure out how to get old in markup }
+		\wordwrap {  { \bullet } Do a better job with bar lines. See http://lilypond.org/doc/v2.19/Documentation/notation/bars  }
 	}
+
 }
+
+
 
 %{ ***********************************
    * 
@@ -472,6 +476,76 @@ bullet = \markup { \char ##x2022 }
 
 
 
+%{ ***********************************
+   * 
+   * REPEATS AND OTHER BARS
+   * 
+   ********************************* 
+%}
+% http://lilypond.org/doc/v2.19/Documentation/notation/bars
+
+\markup {
+	\vspace #2
+	\fontsize #4
+	\line {   
+		\bold { "Bar lines"}		 
+	} 
+	\column{
+		\line { "See more at http://lilypond.org/doc/v2.19/Documentation/notation/bars" 
+		}
+	}
+}
+
+\markup {
+	\vspace #1
+	\column { \bold { "Double bar lines:"}		 
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+            "    f4 e d c \\bar \"|.\" "
+ 			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+	 	\score {
+			\relative c' {
+			\time 4/4
+				f4 e d c \bar "|."
+			}
+		}
+	}	
+}
+
+\markup {
+	\vspace #1
+	\column {\bold { "Repeats:"}		 
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+            "    f4 e d c \\bar \"|.\" "
+ 			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\relative c' {
+			\time 4/4
+				f4 e d c \bar ":|]"
+			}
+		}
+	}	
+}
+
  
 %{ ***********************************
    * 
@@ -828,4 +902,3 @@ bullet = \markup { \char ##x2022 }
 	\column {
 	}
 }
-
