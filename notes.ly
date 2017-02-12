@@ -5,6 +5,8 @@
   	title = "How to create a tunebook with Lilypad"
 }
 
+bullet = \markup { \char ##x2022 }
+
 %{ ***********************************
    * MULTILINE COMMENT TEMPLATE
    * 
@@ -59,24 +61,39 @@
 	\line \bold { "Writing the score" } 
 }
 
+
 \markup {
 
 	\vspace #2
 	\column {
 		\bold { "The minimum file" } 
-			\line { "From the" \bold { File } "menu, choose" \bold {About Lilypond} }
-		"This shows the version number."
-		"Replace the version number below with that value"
-	}
-}
+		\line {  { \bullet } "From the" \bold { File } "menu, choose" \bold "New" }
+		"A simple notepad appears."
 
-\markup {
-	\vspace #1
-	\hspace #8 \column \typewriter {
-         "\\version \"2.19.54\" "  
-         "{"
-         "     c d e f"
-         "}"
+		\wordwrap {  { \bullet } "The first line should be" \typewriter { "\\version",} followed by whatever the current version of Lilypad is in quotes. }
+		"For example:"
+		\typewriter {"\\version \"2.19.54\"" }
+		"If you don't know the version number, you can find it out like this:"
+		\wordwrap {  { \bullet } "From the" \bold { LilyPond } "menu, choose" \bold {About LilyPond} "and look at the numbers and dots following the word" \bold "Version" }
+		\line {  { \bullet } "Follow it with the notes of the score:"}
+		\typewriter {
+         	"{"
+         	"     c d e f"
+         	"}"
+		}
+		"So the whole file looks like this:"
+		\hspace #8 \column {
+			\typewriter {
+         		"\\version \"2.19.54\" "  
+         		"{"
+         		"     c d e f"
+         		"}"
+			}
+		"To see what it will look like, you need to typeset the file, but first save it."
+		\line {  { \bullet } "From the" \bold { File } "menu, choose" \bold "Save" or press Command+Save. }
+		"Now compile it:" 
+		\line {  { \bullet } "From the" \bold { Compile } "menu, choose" \bold "Typeset" or press Command+R. } 
+		}
 	}
 }
 
@@ -100,11 +117,13 @@
 
 \markup {
 	\vspace #2
-	\line { "You can see that's not the natural range for the notes." }
-	\line { "The clef is assumed to be treble. You can specify the clef easily using" \typewriter { "\\clef" }
+	\wordwrap { 
+		You can see that's not the natural range for the notes.
+		The clef is assumed to be treble. You can specify the clef easily
+		using \typewriter { "\\clef" }
+	}
 }
 
-}
 
 
 \markup {
@@ -352,7 +371,7 @@
 
 %{ ***********************************
    * 
-   * Note length #3
+   * Note length #3: Sixteenths, etc
    * 
    ********************************* 
 %}
@@ -363,20 +382,24 @@
 	\line \bold { "Note lengths: sixteenths and beyond" } 
 }
 
-
 \markup {
 	\vspace #2
+	\column {
+		\wordwrap \bold { "Append" \typewriter 16 "to make it a 16th note," \typewriter 32 "to make it a 32nd note, and so on." }
+		\wordwrap { "By the way, the" \typewriter [  and 
+			\typewriter ] ensure beams are used instead of flags.  }
+	}
 }
 
 \markup {
 	\vspace #1
-	\line { "Append 16 to make it a  16 \super th note" }
 	\column {
 		\hspace #8 \column \typewriter {
 			"\\version \"2.19.54\" "  
 			"\\relative c' {"
 			"\\time 2/4"
-			"     c8 d e16 f g a b32 c32 d32 e32"
+			"     c8 d e16 f g"
+			"     a b32 [c32 d32 e32]"
 			"}"
 		}
 	}
@@ -384,7 +407,10 @@
 		\line { " " }
 		\score {
 			\relative c' {
-				c8 d e16 f g a b32 [c32 d32 e32]
+			\time 2/4
+				c8 d e16 f g
+				a b32 [c32 d32 e32]
+				
 			}
 		}
 	}	
@@ -392,9 +418,11 @@
 
 
 
+
+
 %{ ***********************************
    * 
-   * Note length #1
+   * Note length #4
    * 
    ********************************* 
 %}
@@ -692,6 +720,7 @@
 }
 
 \markup {
+	\vspace #1
 	\line \bold { "Use \\column to create separate lines of text" }
 }
 
@@ -723,9 +752,17 @@
 	\line \bold { "SPECIMEN:" }
 }
 
-{
-	\clef bass
-	c d e f
-}
+bullet = \markup { \char ##x2022 }
 
+
+\markup {
+
+	\column {
+		\line { \char ##x2022 } "Line 1"
+		\bullet "Line 2"
+		\bullet "Line 3"
+		\line { { \char ##x2022 } "Line 4" }
+		\line { { \bullet } "Line 5" }
+	}
+}
 
