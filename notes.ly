@@ -478,7 +478,7 @@ bullet = \markup { \char ##x2022 }
 
 %{ ***********************************
    * 
-   * REPEATS AND OTHER BARS
+   * BAR LINES AND REPEATS
    * 
    ********************************* 
 %}
@@ -495,6 +495,8 @@ bullet = \markup { \char ##x2022 }
 		}
 	}
 }
+
+% ///
 
 \markup {
 	\vspace #1
@@ -528,7 +530,7 @@ bullet = \markup { \char ##x2022 }
 			"\\version \"2.19.54\" "  
 			"\\relative c' {"
 			"\\time 4/4"
-            "    f4 e d c \\bar \"|.\" "
+            "    f4 e d c \\bar \":|]\" "
  			"}"
 		}
 	}
