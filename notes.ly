@@ -21,9 +21,13 @@ bullet = \markup { \char ##x2022 }
 
 \markup {
 	\vspace #2
-	\line \bold { "XXX" } 
-	\typewriter {"XXX"} {"XXX:"}
+	\column {
+		\line \bold { "XXX" } 
+		"Explanation"
+		\line { \typewriter {"XXX"} }
+	}
 }
+
 
 \markup {
 	\vspace #1
@@ -746,11 +750,56 @@ bullet = \markup { \char ##x2022 }
 }
 
 
+%{ ***********************************
+   * 
+   * VARIABLES
+   * 
+   *********************************** 
+%}
 
+% /// bullet = \markup { \char ##x2022 }
+
+\markup {
+	\vspace #2
+	\column {
+		\line \bold { "Variables-Creating your own markup elements" } 
+		\line { "The bullet character looks like this:" \bullet }
+		\line { "Entering it in text means using its Unicode value, like this: " \typewriter { "\\char ##x2022" } }
+
+		\wordwrap { 
+			"That's hard to remember and harder to read. Instead, you could create your own markup element named "  
+			\typewriter {"\\bullet"}  
+			"by defining a variable like this:" 
+		}
+		\line \typewriter {
+			"bullet = \\markup {\\char ##x2022 }"
+		}
+		\line { 
+			"You'd use it like this:"
+		}
+		\line \typewriter {
+			"\\line {  { \bullet } \"From the\" \\bold { File } "menu, choose" \\bold "New" }"		}
+		\line { { \bullet } "From the" \bold { File } menu, choose \bold New }
+
+
+	}
+		
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\typewriter {
+			"bullet = \\markup {\\char ##x2022 }"
+		}
+	}
+}
 
 \markup {
 	\line \bold { "SPECIMEN:" }
+	
 }
+
 
 bullet = \markup { \char ##x2022 }
 
@@ -758,6 +807,7 @@ bullet = \markup { \char ##x2022 }
 \markup {
 
 	\column {
+		\line { { \bullet } "From the" \bold { File } menu, choose \bold New }
 		\line { \char ##x2022 } "Line 1"
 		\bullet "Line 2"
 		\bullet "Line 3"
