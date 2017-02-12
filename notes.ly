@@ -52,6 +52,15 @@ bullet = \markup { \char ##x2022 }
 *********************************** %}
 
 
+\markup {
+	\vspace #1
+	\column {
+		\line \bold { "To do:" } 
+		\wordwrap {  { \bullet } Figure out how to get HTML links working }
+		\wordwrap {  { \bullet } Figure out how to get old in markup }
+	}
+}
+
 %{ ***********************************
    * 
    * WRITING THE SCORE 1.
@@ -771,12 +780,28 @@ bullet = \markup { \char ##x2022 }
 			\typewriter {"\\bullet"}  
 			"by defining a variable like this:" 
 		}
+	}
+}
+
+\markup {
+	\hspace #8 \column {
 		\line \typewriter {
 			"bullet = \\markup {\\char ##x2022 }"
 		}
+	}
+}
+
+\markup {
+	\column {
 		\line { 
-			"You'd use it like this:"
+			"Here's an example of how you'd use it:"
 		}
+	}
+}
+
+\markup {
+	\hspace #8 \column {
+
 		\line \typewriter {
 			"\\line {  { \bullet } \"From the\" \\bold { File } "menu, choose" \\bold "New" }"		}
 		\line { { \bullet } "From the" \bold { File } menu, choose \bold New }
