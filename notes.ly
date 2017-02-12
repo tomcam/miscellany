@@ -129,7 +129,7 @@ bullet = \markup { \char ##x2022 }
 
 
 \markup {
-	\vspace #2
+	\vspace #1
 	\wordwrap { 
 		You can see that's not the natural range for the notes.
 		The clef is assumed to be treble. You can specify the clef easily
@@ -766,8 +766,6 @@ bullet = \markup { \char ##x2022 }
    *********************************** 
 %}
 
-% /// bullet = \markup { \char ##x2022 }
-
 \markup {
 	\vspace #2
 	\column {
@@ -784,60 +782,50 @@ bullet = \markup { \char ##x2022 }
 }
 
 \markup {
+	\vspace #1
 	\hspace #8 \column {
 		\line \typewriter {
 			"bullet = \\markup {\\char ##x2022 }"
 		}
 	}
-}
-
-\markup {
-	\column {
-		\line { 
-			"Here's an example of how you'd use it:"
-		}
-	}
-}
-
-\markup {
-	\hspace #8 \column {
-
-		\line \typewriter {
-			"\\line {  { \bullet } \"From the\" \\bold { File } "menu, choose" \\bold "New" }"		}
-		\line { { \bullet } "From the" \bold { File } menu, choose \bold New }
-
-
-	}
-		
 }
 
 \markup {
 	\vspace #1
 	\column {
-		\typewriter {
-			"bullet = \\markup {\\char ##x2022 }"
+		\wordwrap { 
+			"You would then use it by preceding it with a \\ character like any other markup. Here's a complete example of how you'd use it. Save this as a file and compile it:"
 		}
 	}
 }
 
 \markup {
-	\line \bold { "SPECIMEN:" }
+	\vspace #1
+	\hspace #8 \column {
+		\typewriter {
+				"\\version \"2.19.54\" "  
+				"bullet = \\markup {\\char ##x2022 }"
+				"\\markup {"
+				"    \\line { { \bullet } Don't forget backup }"				"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { { \bullet } Don't forget backup }
+	}
+
+}
+
+\markup {
+	\vspace #9 \line \bold { "SPECIMEN:" }
 	
 }
 
 
-bullet = \markup { \char ##x2022 }
-
-
 \markup {
-
 	\column {
-		\line { { \bullet } "From the" \bold { File } menu, choose \bold New }
-		\line { \char ##x2022 } "Line 1"
-		\bullet "Line 2"
-		\bullet "Line 3"
-		\line { { \char ##x2022 } "Line 4" }
-		\line { { \bullet } "Line 5" }
 	}
 }
 
