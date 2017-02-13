@@ -29,9 +29,11 @@ bullet = \markup { \char ##x2022 }
 
 \markup {
 	\vspace #2
-	\wordwrap \bold { "XXX" } 
-	\wordwrap { A note about
-		\typewriter {"\\XX"} {":"}
+	\column {
+		\wordwrap \bold { "XXX" } 
+		\wordwrap { A note about
+			\typewriter {"\\XX"} {":"}
+		}
 	}
 }
 
@@ -204,13 +206,6 @@ bullet = \markup { \char ##x2022 }
 
 
 
-
-
-
-
-
-
-
 \markup {
 	\vspace #2
 	\line \bold { "You will almost always use the" } 
@@ -338,6 +333,75 @@ bullet = \markup { \char ##x2022 }
 \markup {
 	\vspace #1
 	\line {"To learn about constructs similar to grace notes, visit http://lilypond.org/doc/v2.18/Documentation/notation/special-rhythmic-concerns"}
+}
+
+%{ ***********************************
+   * 
+   * Trill 1
+   * 
+   ********************************* 
+%}
+
+\markup {
+	\vspace #2
+	\column {
+		\wordwrap \bold { "Adding a trill mark above the note" } 
+		\wordwrap { 
+
+			To create a { \bold \italic tr } just add
+			\typewriter { "\\trill" } directly after the note name, 
+			with no space. For example, \typewriter { "c8" } becomes
+			 \typewriter { "c8\\trill" }. In the example below, the 
+			trill is being added over a grace note.
+		}
+
+	}
+
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"<<"
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 6/8"
+			"    \\grace c8\\trill b4. a8 g8. [b16] |"
+			"}"
+			"\\addlyrics {"
+			"    plea- sure this _ |"
+			"}"
+			">>"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			<<
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 6/8
+				\grace c8\trill b4. a8 g8. [b16]  | 
+			}
+			\addlyrics {
+				plea- sure this _ |
+			}
+			>>
+		}
+	}	
+}
+
+\markup {
+	\vspace #1
+	\line {"See also http://lilypond.org/doc/v2.19/Documentation/notation/expressive-marks-as-lines#trills"}
 }
 
 
