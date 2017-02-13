@@ -1,4 +1,8 @@
-\include "settings.ly"
+%\include "settings.ly"
+
+% Alternate lyrics:
+% http://quod.lib.umich.edu/e/evans/N28649.0001.001/1:80?rgn=div1;view=fulltext
+
 
 \header{
 	% Song I.
