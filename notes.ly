@@ -18,25 +18,39 @@ bullet = \markup { \char ##x2022 }
    * TEMPLATE for score inside markup
    * Using 2-column format
    ***********************************
+%{ ***********************************
+   * 
+   * 
+   * 
+   ********************************* 
+%}
+
+%{ ***********************************
 
 \markup {
 	\vspace #2
-	\column {
-		\wordwrap \bold { "XXX" } 
-		\wordwrap  { "Explanation" }
-		\line { \typewriter {"XXX"} }
+	\wordwrap \bold { "XXX" } 
+	\wordwrap { A note about
+		\typewriter {"\\XX"} {":"}
 	}
 }
-
 
 \markup {
 	\vspace #1
 	\column {
 		\hspace #8 \column \typewriter {
 			"\\version \"2.19.54\" "  
-			"\\relative c' {"
-			"     XXX"
+			"<<"
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 6/8"
+			"    \\grace a8 g4 fis8 e4 g8 |"
 			"}"
+			"\\addlyrics {"
+			"    W X Y, Z |"
+			"}"
+			">>"
 		}
 	}
 	\column {
@@ -44,12 +58,26 @@ bullet = \markup { \char ##x2022 }
 		\line { " " }
 		\line { " " }
 		\line { " " }
+		\line { " " }
 		\score {
-			\relative c' {
-				XXX
+			<<
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 6/8
+				\grace a8 g4 fis8 e4 g8 |
 			}
+			\addlyrics {
+				W X Y, Z |
+			}
+			>>
 		}
 	}	
+}
+
+\markup {
+	\vspace #1
+	\line {"To XXX, visit http:XXX"}
 }
 
 *********************************** %}
@@ -83,8 +111,7 @@ bullet = \markup { \char ##x2022 }
 
 
 \markup {
-
-	\vspace #2
+	\vspace #1
 	\column {
 		\bold { "The minimum file" } 
 		\line {  { \bullet } "From the" \bold { File } "menu, choose" \bold "New" }
@@ -120,7 +147,6 @@ bullet = \markup { \char ##x2022 }
 \markup {
 	\vspace #1
 	\line { "Results:" }
-	\hspace #0
 }
 
 {
@@ -136,7 +162,6 @@ bullet = \markup { \char ##x2022 }
 
 
 \markup {
-	\vspace #1
 	\wordwrap { 
 		You can see that's not the natural range for the notes.
 		The clef is assumed to be treble. You can specify the clef easily
@@ -164,6 +189,8 @@ bullet = \markup { \char ##x2022 }
 		}
 	}
 	\column {
+		\line { " " }
+		\line { " " }
 		\line { " " }
 		\score {
 			\absolute {
@@ -261,9 +288,16 @@ bullet = \markup { \char ##x2022 }
 
 \markup {
 	\vspace #2
-	\line \bold { "To add grace notes that aren't included in the note count, use" } 
-	\typewriter {"\\grace"} {":"}
+	\column {
+		\wordwrap \bold { "To add grace notes that aren't included in the note count, use" } 
+		\typewriter {"\\grace"} {"followed by the grace note." }
+		\wordwrap { 
+		In this case, the \typewriter {"\\grace a8"} isn't applied to
+		the measure count.
+		}
+	}
 }
+
 
 \markup {
 	\vspace #1
@@ -497,8 +531,6 @@ bullet = \markup { \char ##x2022 }
 }
 
 
-% ///
-
 %{ ***********************************
    * 
    * Adding beams
@@ -622,7 +654,7 @@ bullet = \markup { \char ##x2022 }
 	}	
 }
 
-
+% ///
  
 %{ ***********************************
    * 
