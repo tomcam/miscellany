@@ -32,7 +32,7 @@
  	\hspace #10 % Add some right margin to the first column
  	\column {
  		\bold "Key:"
-		"G Major"
+		"E Minor"
 	} % column
 	\line { " " }
 } % markup
@@ -122,10 +122,11 @@
 	dieu, ev' ry |
 	plea- sure this |
 	bo- som can |
-	warm |	
-
+	warm |
+	
 } % Lyrics end here
 
 % Everything from here up to the << brackets is synchronized
 >>
+
 
