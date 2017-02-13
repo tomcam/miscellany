@@ -22,8 +22,8 @@ bullet = \markup { \char ##x2022 }
 \markup {
 	\vspace #2
 	\column {
-		\line \bold { "XXX" } 
-		"Explanation"
+		\wordwrap \bold { "XXX" } 
+		\wordwrap  { "Explanation" }
 		\line { \typewriter {"XXX"} }
 	}
 }
@@ -40,6 +40,9 @@ bullet = \markup { \char ##x2022 }
 		}
 	}
 	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
 		\line { " " }
 		\score {
 			\relative c' {
@@ -474,64 +477,56 @@ bullet = \markup { \char ##x2022 }
 	}	
 }
 
-
-
 %{ ***********************************
    * 
-   * BAR LINES AND REPEATS
+   * Adding phrase marks INTRO
    * 
-   ********************************* 
+   *********************************** 
 %}
-% http://lilypond.org/doc/v2.19/Documentation/notation/bars
+
 
 \markup {
 	\vspace #2
-	\fontsize #4
-	\line {   
-		\bold { "Bar lines"}		 
-	} 
-	\column{
-		\line { "See more at http://lilypond.org/doc/v2.19/Documentation/notation/bars" 
+	\column {
+		\line \bold { "Adding phrase marks and flags" } 
+		\wordwrap { 
+			In this example the last beat needs a phrase mark over the 
+			both sixteenths and the eight notes:
 		}
 	}
 }
+
 
 % ///
 
+%{ ***********************************
+   * 
+   * Adding beams
+   * 
+   *********************************** 
+%}
+
+
 \markup {
-	\vspace #1
-	\column { \bold { "Double bar lines:"}		 
-		\hspace #8 \column \typewriter {
-			"\\version \"2.19.54\" "  
-			"\\relative c' {"
-			"\\time 4/4"
-            "    f4 e d c \\bar \"|.\" "
- 			"}"
+	\vspace #2
+	\column {
+		\wordwrap \bold { "Adding beams: Using [ and ] to replace flags with beams." } 
+		\wordwrap { Use parentheses \typewriter {"["} and \typewriter {"]"} 		to surround the all but the first note to be included in the phrase. 		Here's what the code looks like, first without the brackets and
+		second with the brackets. Note that the \typewriter {"e16"} is 		not included, just the trailing notes: \typewriter { "[fis16 g8]"}
 		}
 	}
-	\column {
-		\line { " " }
-		\line { " " }
-		\line { " " }
-		\line { " " }
-	 	\score {
-			\relative c' {
-			\time 4/4
-				f4 e d c \bar "|."
-			}
-		}
-	}	
 }
 
 \markup {
 	\vspace #1
-	\column {\bold { "Repeats:"}		 
+	\column {
 		\hspace #8 \column \typewriter {
 			"\\version \"2.19.54\" "  
-			"\\relative c' {"
-			"\\time 4/4"
-            "    f4 e d c \\bar \":|]\" "
- 			"}"
+			"\\relative e'' {"
+			"     \\key e \\minor"
+			"     \\time 3/4"
+			"     e2 e16 fis16 g8"
+			"}"
 		}
 	}
 	\column {
@@ -540,13 +535,93 @@ bullet = \markup { \char ##x2022 }
 		\line { " " }
 		\line { " " }
 		\score {
-			\relative c' {
-			\time 4/4
-				f4 e d c \bar ":|]"
+			\version "2.19.54" 
+			\relative e'' { 
+				\autoBeamOff	
+				\key e \minor
+				\time 3/4
+				e2 e16 fis16 g8      
 			}
 		}
 	}	
 }
+
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative e'' {"
+			"     \\key e \\minor"
+			"     \\time 3/4"
+			"     e2 e16 [fis16 g8]"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\version "2.19.54" 
+			\relative e'' { 	
+				\key e \minor
+				\time 3/4
+				e2 e16 [fis16 g8]      
+			}
+		}
+	}	
+}
+
+
+%{ ***********************************
+   * 
+   * Adding phrase marks
+   * 
+   *********************************** 
+%}
+
+
+\markup {
+	\vspace #2
+	\column {
+		\wordwrap \bold { "Adding phrase marks: Using ( and ) to show phrasing." } 
+		\wordwrap { Use parentheses \typewriter {"("} and \typewriter {")"} 		to surround the all but the first note to be included in the phrase. 		Here's what the code looks like. Note that the \typewriter {"e16"} is 		not included, just the trailing notes: \typewriter { "([fis16 g8])"}
+		}
+	}
+}
+
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative e'' {"
+			"     \\key e \\minor"
+			"     \\time 3/4"
+			"     e2 e16 ([fis16 g8])"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\version "2.19.54" 
+			\relative e'' { 	
+				\key e \minor
+				\time 3/4
+				e2 e16 ([fis16 g8])      
+			}
+		}
+	}	
+}
+
 
  
 %{ ***********************************
@@ -608,6 +683,13 @@ bullet = \markup { \char ##x2022 }
 
    ********************************* %}
 
+
+%{ ***********************************
+   * 
+   * MARKUP
+   * 
+   *********************************** 
+%}
 
 
 \markup {
@@ -904,3 +986,4 @@ bullet = \markup { \char ##x2022 }
 	\column {
 	}
 }
+
