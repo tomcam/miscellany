@@ -89,6 +89,7 @@ bullet = \markup { \char ##x2022 }
 	\vspace #1
 	\column {
 		\line \bold { "To do:" } 
+		\wordwrap {  { \bullet } wordwrap section not wrapping! }
 		\wordwrap {  { \bullet } Figure out how to get HTML links working }
 		\wordwrap {  { \bullet } Figure out how to get old in markup }
 		\wordwrap {  { \bullet } Do a better job with bar lines. See http://lilypond.org/doc/v2.19/Documentation/notation/bars  }
@@ -718,7 +719,7 @@ bullet = \markup { \char ##x2022 }
 	}	
 }
 
-% ///
+
  
 %{ ***********************************
    * 
@@ -787,6 +788,12 @@ bullet = \markup { \char ##x2022 }
    *********************************** 
 %}
 
+%{ ***********************************
+   * 
+   * \line
+   * 
+   *********************************** 
+%}
 
 \markup {
 	\vspace #2
@@ -796,12 +803,19 @@ bullet = \markup { \char ##x2022 }
 
 \markup {
 	\vspace #2
-	\line \bold { "Blocks of text" }
+	\column {
+		\wordwrap \bold { 
+		For lines of text that do not word wrap use
+		\typewriter {"\\line"}: 
+		}
+	}
 }
+
 \markup {
 	\hspace #8
 	\vspace #1
 	\column \typewriter {
+		"\\version \"2.19.54\" "  
 		"\\markup {"
 		"    \\line {\"hello, world.\"}"
 		"}"
@@ -819,6 +833,56 @@ bullet = \markup { \char ##x2022 }
 	\line { "hello, world." }
 }
 
+%{ ***********************************
+   * 
+   * \wordwrap
+   * 
+   *********************************** 
+%}
+
+\markup {
+	\vspace #2
+	\column {
+		\wordwrap \bold { 
+		For lines of text that do word wrap use
+		\typewriter {"\\wordwrap"}: 
+		}
+	}
+}
+
+\markup {
+	\hspace #8
+	\vspace #1
+	\column \typewriter {
+		"\\version \"2.19.54\" "  
+		"\\markup {"
+		"    \\wordwrap {\"Learning LilyPond markup can be a little overwhelming at first, but the flip side is that you end up learning how to create beautifully typeset music in a very short time once you've learned some of the techniques presented here. All of them are presented in a superior way by the LilyPond documentation. The only advantage of this lesson is that it focuses specifically on getting simple songs engraved as quickly sa possible.\"}"
+		"}"
+	}
+}
+
+\markup {
+	\vspace #1
+	\line { "Results:" }
+}
+
+\markup {
+	\hspace #8
+	\vspace #1
+	\column {
+		\wordwrap { "Learning LilyPond markup can be a little overwhelming at first, but the flip side is that you end up learning how to create beautifully typeset music in a very short time once you've learned some of the techniques presented here. All of them are presented in a superior way by the LilyPond documentation. The only advantage of this lesson is that it focuses specifically on getting simple songs engraved as quickly sa possible." }
+	}
+}
+
+% ///
+
+
+%{ ***********************************
+   * 
+   * \vspace
+   * 
+   *********************************** 
+%}
 
 
 \markup {
@@ -878,28 +942,6 @@ bullet = \markup { \char ##x2022 }
 	\vspace #1
 	\line { \italic "hello,""world."}
 }
-
-
-
-%{ ***********************************
-   * TEMPLATE for score inside markup
-   ***********************************
-\markup {
-	\line \bold { "What this is" }
-}
-\markup {
-	\score {
-		\absolute {
-			\key f \major
-			\clef treble
-			\once \override Staff.TimeSignature #'stencil = ##f 
-			c' f'' 
-		}
-	}
-}
-
-   ********************************* %}
-
 
 
 
