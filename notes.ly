@@ -89,6 +89,7 @@ bullet = \markup { \char ##x2022 }
 	\vspace #1
 	\column {
 		\line \bold { "To do:" } 
+		\wordwrap {  { \bullet } Bass clef section unfinished }
 		\wordwrap {  { \bullet } wordwrap section not wrapping! }
 		\wordwrap {  { \bullet } Figure out how to get HTML links working }
 		\wordwrap {  { \bullet } Figure out how to get old in markup }
@@ -125,6 +126,7 @@ bullet = \markup { \char ##x2022 }
 		\typewriter {"\\version \"2.19.54\"" }
 		"If you don't know the version number, you can find it out like this:"
 		\wordwrap {  { \bullet } "From the" \bold { LilyPond } "menu, choose" \bold {About LilyPond} "and look at the numbers and dots following the word" \bold "Version" }
+		\line { " " }
 		\line {  { \bullet } "Follow it with the notes of the score:"}
 		\typewriter {
          	"{"
@@ -158,27 +160,22 @@ bullet = \markup { \char ##x2022 }
 
 %{ ***********************************
    * 
-   * WRITING THE SCORE 2.
+   * CHANGING THE CLEF
    * 
    ********************************* 
 %}
 
-
 \markup {
-	\wordwrap { 
-		You can see that's not the natural range for the notes.
-		The clef is assumed to be treble. You can specify the clef easily
-		using \typewriter { "\\clef" }
+	\column {
+		\line \bold { Changing the clef }
+		\wordwrap { 
+			You can see that's not the natural range for the notes.
+			The clef is assumed to be treble. You can specify the clef easily
+			using \typewriter { "\\clef" }
+		}
 	}
 }
 
-
-
-\markup {
-	\vspace #2
-	\line \bold { "XXX" } 
-	\typewriter {"XXX"} {"XXX:"}
-}
 
 \markup {
 	\vspace #1
@@ -204,7 +201,6 @@ bullet = \markup { \char ##x2022 }
 		}
 	}	
 }
-
 
 
 \markup {
@@ -749,10 +745,10 @@ bullet = \markup { \char ##x2022 }
 			"    \\key g \\major"
 			"    \\clef treble"
 			"    \\time 6/8"
-			"    a8 g4 fis8 e4 g8 |"
+			"    g8 a b d4.\\fermata |"
 			"}"
 			"\\addlyrics {"
-			"    W X Y, Z |"
+			"    Tra la la la |"
 			"}"
 			">>"
 		}
