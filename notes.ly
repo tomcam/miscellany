@@ -90,6 +90,7 @@ bullet = \markup { \char ##x2022 }
 	\column {
 		\line \bold { "To do:" } 
 		\wordwrap {  { \bullet } Bass clef section unfinished }
+		\wordwrap {  { \bullet } Explain triplets better }
 		\wordwrap {  { \bullet } wordwrap section not wrapping! }
 		\wordwrap {  { \bullet } Figure out how to get HTML links working }
 		\wordwrap {  { \bullet } Figure out how to get old in markup }
@@ -537,7 +538,7 @@ bullet = \markup { \char ##x2022 }
 
 %{ ***********************************
    * 
-   * Note length #4
+   * Note length #4 : Repeat shortcut
    * 
    ********************************* 
 %}
@@ -583,7 +584,7 @@ bullet = \markup { \char ##x2022 }
 \markup {
 	\vspace #2
 	\column {
-		\line \bold { "Adding phrase marks and flags" } 
+		\line \bold { "Adding phrase marks and beams" } 
 		\wordwrap { 
 			In this example the last beat needs a phrase mark over the 
 			both sixteenths and the eight notes:
@@ -714,6 +715,112 @@ bullet = \markup { \char ##x2022 }
 		}
 	}	
 }
+
+
+%{ ***********************************
+   * 
+   * Triplets
+   * 
+   ********************************* 
+%}
+
+
+\markup {
+
+	\vspace #2
+	\column {
+		\wordwrap \bold { "Triplets" } 
+		\wordwrap { 
+			Use \typewriter {"\\tuplet"}, followed by fraction
+			 (\typewriter {"3/2"} in this case), followed by the notes
+			enclosed in \typewriter {"{"} and \typewriter {"}"}.
+		}
+	}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 4/4"
+			"    \\tuplet 3/2 {c8 [b a]} d c b4. b8"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 4/4
+					\tuplet 3/2 {c8 [b a]} d c b4. b8 
+			}
+		}
+	}	
+}
+
+
+
+%{ ***********************************
+   * 
+   * Triplets with phrase marks
+   * 
+   ********************************* 
+%}
+
+
+\markup {
+
+	\vspace #2
+	\column {
+		%\wordwrap \bold { "Triplets" } 
+		\wordwrap  { 
+			"To get a phrase mark, surround the second two notes with parentheses:" 
+		} 
+	}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 4/4"
+			"    \\tuplet 3/2 {c8 ([(b a])} d c b4. b8"
+			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 4/4
+					\tuplet 3/2 {c8 ([(b a])} d c b4. b8 
+			}
+		}
+	}	
+}
+
+
+
 
 %{ ***********************************
    * 
