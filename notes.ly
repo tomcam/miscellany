@@ -92,7 +92,7 @@ bullet = \markup { \char ##x2022 }
 		\wordwrap {  { \bullet } wordwrap section not wrapping! }
 		\wordwrap {  { \bullet } Figure out how to get HTML links working }
 		\wordwrap {  { \bullet } Figure out how to get old in markup }
-		\wordwrap {  { \bullet } Do a better job with bar lines. See http://lilypond.org/doc/v2.19/Documentation/notation/bars  }
+		\wordwrap {  { \bullet } Do a better job with bar lines. See http://lilypond.org/doc/v2.19/Documentation/notation/  }
 	}
 
 }
@@ -719,7 +719,138 @@ bullet = \markup { \char ##x2022 }
 	}	
 }
 
+%{ ***********************************
+   * 
+   * FERMATA
+   * 
+   ********************************* 
+%}
 
+\markup {
+
+	\vspace #2
+	\column {
+		\wordwrap \bold { "Fermatas" } 
+		\wordwrap { 
+			To add a fermata, simply append
+			\typewriter {"\\fermata"} to the note with no space: 
+		}
+		
+	}
+}
+
+\markup {
+	\vspace #1
+	\column {
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"<<"
+			"\\relative g' {"
+			"    \\key g \\major"
+			"    \\clef treble"
+			"    \\time 6/8"
+			"    a8 g4 fis8 e4 g8 |"
+			"}"
+			"\\addlyrics {"
+			"    W X Y, Z |"
+			"}"
+			">>"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			<<
+			\relative g' {
+				\key g \major
+				\clef treble
+				\time 6/8
+				g8 a b d4.\fermata |
+			}
+			\addlyrics {
+				Tra la la la |
+			}
+			>>
+		}
+	}	
+}
+
+%{ ***********************************
+   * 
+   * BAR LINES AND REPEATS
+   * 
+   ********************************* 
+%}
+% http://lilypond.org/doc/v2.19/Documentation/notation/bars
+
+\markup {
+	\vspace #2
+	\fontsize #4
+	\line {   
+		\bold { "Bar lines"}		 
+	} 
+	\column{
+		\line { "See more at http://lilypond.org/doc/v2.19/Documentation/notation/bars" 
+		}
+	}
+}
+
+
+\markup {
+	\vspace #1
+	\column { \bold { "Double bar lines:"}		 
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+            "    f4 e d c \\bar \"|.\" "
+ 			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+	 	\score {
+			\relative c' {
+			\time 4/4
+				f4 e d c \bar "|."
+			}
+		}
+	}	
+}
+
+\markup {
+	\vspace #1
+	\column {\bold { "Repeats:"}		 
+		\hspace #8 \column \typewriter {
+			"\\version \"2.19.54\" "  
+			"\\relative c' {"
+			"\\time 4/4"
+            "    f4 e d c \\bar \":|]\" "
+ 			"}"
+		}
+	}
+	\column {
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\line { " " }
+		\score {
+			\relative c' {
+			\time 4/4
+				f4 e d c \bar ":|]"
+			}
+		}
+	}	
+}
+
+ 
  
 %{ ***********************************
    * 
