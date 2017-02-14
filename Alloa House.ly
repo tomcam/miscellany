@@ -122,8 +122,12 @@
 	dieu, ev' ry |
 	plea- sure this |
 	bo- som can |
-	warm |
+	warm I |
 	
+	
+	
+	
+
 } % Lyrics end here
 
 % Everything from here up to the << brackets is synchronized
